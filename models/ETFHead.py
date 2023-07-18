@@ -18,4 +18,8 @@ def generate_random_orthogonal_matrix(feat_in, num_classes):
 class ETFHead():
     def __init__(self, num_classes : int, feat_in : int) -> None:
         orth_vec = generate_random_orthogonal_matrix(feat_in, num_classes)
-        
+        i_nc_nc = torch.eye(num_classes)
+        one_nc_nc: torch.Tensor = torch.mul(torch.ones(
+            num_classes, num_classes), (1 / num_classes))
+        etf_vec = torch.mul(torch.matmul(orth_vec, i_nc_nc - one_nc_nc),
+                            math.sqrt(num_classes / (num_classes - 1)))
