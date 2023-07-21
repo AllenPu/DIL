@@ -2,6 +2,7 @@ import torchvision.transforms as transforms
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 import os
+import numpy as np
 
 
 class iDomainNet(Dataset):
